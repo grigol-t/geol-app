@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 
-const schema = new mongoose.Schema({
-	report: mongoose.Schema.Types.ObjectId,
-	detailsID: Number,
-	connectionID: Number,
-	status: Number,
-	comments: String,
+const vehicle = new mongoose.Schema({
+	location: String,
+	price: Number,
+	type: String,
+	color: String,
+	model: String,
+	licenseNumber: String,
+	imageUrl: String,
 });
 
-module.exports = mongoose.model('Vehicle', schema);
+module.exports = mongoose.model('Vehicle', vehicle);
