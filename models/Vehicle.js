@@ -10,4 +10,4 @@ const vehicle = new mongoose.Schema({
 	// imageUrl: String,
 });
 
-module.exports = mongoose.model('Vehicle', vehicle);
+module.exports = mongoose.model("Vehicle", vehicle);

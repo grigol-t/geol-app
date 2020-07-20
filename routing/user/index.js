@@ -9,6 +9,7 @@ router.get('/user/list', ctrl.list);
 router.put('/user/create', ctrl.create);
 router.post('/user/update', ctrl.update);
 router.post('/user/login', ctrl.login);
+router.post('/user/logout/:id', ctrl.logout);
 router.post('/user/routeStart/:id', ctrl.routeStart);
 
 module.exports = router;

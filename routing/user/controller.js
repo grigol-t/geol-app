@@ -25,8 +25,19 @@ module.exports.create = (req, res) => {
 	};
 }
 
-module.exports.update = (req, res) =>
-	User.findById(req.params.id)
+module.exports.logout = async (req, res) => {
+	try{
+		let user = await User.findById(req.params.id)
+		user.tokens = [];
+		user.save();
+		res.send(user);
+	} catch(e) {
+		res.status(400).send(e);
+	}
+}
+
+module.exports.update = async (req, res) =>
+	await User.findById(req.params.id)
 		.then(x => Object.assign(x, req.body))
 		.then(x => x.save())
 		.then(x => res.send(x));

@@ -3,6 +3,7 @@ const app = express();
 const Vehicle = require('./models/Vehicle');
 const vehicleRouting = require('./routing/vehicle')
 const userRouting = require('./routing/user')
+const routeRouting = require('./routing/route')
 app.get('/', (req, res) => res.send('Hello World!'));
 
 const mongoose = require('mongoose');
@@ -18,6 +19,7 @@ mongoose.connect(
 app.use(express.json())
 app.use(vehicleRouting)
 app.use(userRouting)
+app.use(routeRouting)
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
