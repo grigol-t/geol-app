@@ -29,7 +29,13 @@ module.exports.userRoutes = async (req,res ) => {
         res.status(400).send(e)
     }
 }
-module.exports.create = (req, res) => new Route(req.body).save().then(x => res.send(x));
+module.exports.create = (req, res) => {
+    try {
+    new Route(req.body).save().then(x => res.send(x));
+    } catch(e) {
+        res.status(400).send(e);
+    }
+}
 
 module.exports.update = async (req, res) =>
 	await Route.findById(req.params.id)
