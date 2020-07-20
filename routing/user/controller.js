@@ -17,7 +17,7 @@ module.exports.list = (req, res) =>
 
 module.exports.create = (req, res) => {
 	try {
-	new User(req.body).
+		new User(req.body).
 		save()
 		.then(x => res.send(x))
 	} catch(e) {
