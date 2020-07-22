@@ -9,10 +9,17 @@ module.exports.findById = (req, res) =>
 			res.send(x);
 		});
 
-module.exports.list = (req, res) =>
-	Vehicle.find({})
-		.lean()
-		.then(x => res.send(x));
+module.exports.list = async (req, res) => {
+	try {
+		const vehicles  = await Vehicle.find({}).lean();
+		const cars = vehicles.filter(x => x.type === "car");
+		const bicycle = vehicles.filter(x => x.type === "bicycle");
+		const electricScooter = vehicles.filter(x => x.type === "electricScooter");
+		res.send({cars,bicycle,electricScooter});
+	} catch(e) {
+		res.status(400).send(e)
+	}
+	}
 
 module.exports.create = (req, res) => new Vehicle(req.body).save().then(x => res.send(x));
 
