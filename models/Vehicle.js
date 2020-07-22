@@ -7,7 +7,7 @@ const vehicle = new mongoose.Schema({
 	color: String,
 	model: String,
 	licenseNumber: String,
-	// imageUrl: String,
+	imageUrl: Array,
 });
 
 module.exports = mongoose.model("Vehicle", vehicle);

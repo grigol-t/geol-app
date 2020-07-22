@@ -12,9 +12,9 @@ module.exports.findById = (req, res) =>
 module.exports.list = async (req, res) => {
 	try {
 		const vehicles  = await Vehicle.find({}).lean();
-		const cars = vehicles.filter(x => x.type === "car");
-		const bicycle = vehicles.filter(x => x.type === "bicycle");
-		const electricScooter = vehicles.filter(x => x.type === "electricScooter");
+		const cars = vehicles.filter(x => x.type === "Car");
+		const bicycle = vehicles.filter(x => x.type === "Bicycle");
+		const electricScooter = vehicles.filter(x => x.type === "ElectricScooter");
 		res.send({cars,bicycle,electricScooter});
 	} catch(e) {
 		res.status(400).send(e)
